@@ -3,9 +3,19 @@
 module.exports = function(environment) {
   let ENV = {
     modulePrefix: 'exam-online-frontend',
+    podModulePrefix: 'exam-online-frontend/pods',
     environment,
     rootURL: '/',
     locationType: 'auto',
+    'ember-simple-auth-token': {
+      identificationField: 'code',
+      passwordField: 'code',
+      tokenPropertyName: 'jwt',
+      refreshAccessTokens: true,
+      tokenExpireName: 'exp',
+      refreshLeeway: 60, //send a request for refresh_token 60sec before actual expiration
+      authorizationPrefix: 'JWT ',
+    },
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -24,11 +34,7 @@ module.exports = function(environment) {
   };
 
   if (environment === 'development') {
-    // ENV.APP.LOG_RESOLVER = true;
-    // ENV.APP.LOG_ACTIVE_GENERATION = true;
-    // ENV.APP.LOG_TRANSITIONS = true;
-    // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
-    // ENV.APP.LOG_VIEW_LOOKUPS = true;
+    ENV.apiHost = 'http://localhost:6969'
   }
 
   if (environment === 'test') {
@@ -46,6 +52,12 @@ module.exports = function(environment) {
   if (environment === 'production') {
     // here you can enable a production-specific feature
   }
+
+  ENV['ember-simple-auth'] = {
+    refreshTokenPropertyName: "refresh_token"
+  }
+	ENV['ember-simple-auth-token'].serverTokenEndpoint = ENV.apiHost + "/api/jwt/login"
+	ENV['ember-simple-auth-token'].serverTokenRefreshEndpoint = ENV.apiHost + "/api/v2/jwt/refresh"
 
   return ENV;
 };

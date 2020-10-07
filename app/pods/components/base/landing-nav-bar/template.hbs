@@ -1,0 +1,18 @@
+<nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+  <div class="container">
+    <LinkTo @route="index" class="navbar-brand">Study Abacus</LinkTo>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <LinkTo @route="register" class="nav-link">Register</LinkTo>
+        </li>
+        <li class="nav-item">
+          <LinkTo @route="login" class="nav-link">Login</LinkTo>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
