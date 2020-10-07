@@ -1,12 +1,13 @@
 import Route from '@ember/routing/route';
 import { inject as service } from '@ember/service';
 
-export default class IndexRoute extends Route {
+export default class ApplicationRoute extends Route {
   @service session;
+  @service currentUser;
 
-  beforeModel() {
+  async beforeModel() {
     if (this.session.isAuthenticated) {
-      this.transitionTo('dashboard');
+      await this.currentUser.load();
     }
   }
 }

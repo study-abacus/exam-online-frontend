@@ -4,6 +4,7 @@ import { inject as service } from '@ember/service';
 
 export default class LoginController extends Controller {
   @service session;
+  @service currentUser;
 
   email = '';
   password = '';
@@ -15,6 +16,7 @@ export default class LoginController extends Controller {
         email: this.email,
         password: this.password
       })
+      .then(() => this.currentUser.load())
       .then(() => {
         this.transitionToRoute('dashboard')
       })

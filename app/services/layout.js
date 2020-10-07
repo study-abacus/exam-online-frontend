@@ -1,19 +1,18 @@
-import Service from '@ember/service';
+import Service, { inject as service } from '@ember/service';
 
 export default class LayoutService extends Service {
-  currentLayout = 'base'
-  previousLayout = null
+  @service session;
+  @service router;
 
   get currentLayoutComponentName() {
-    return `layouts/${this.currentLayout}`
-  }
+    if (this.session.isAuthenticated) {
+      return 'layouts/with-navbar-sidebar';
+    }
 
-  setCurrentLayout(name) {
-    this.set('previousLayout', this.currentLayout);
-    this.set('currentLayout', name);
-  }
+    if (this.router.currentRoute && this.router.currentRoute.name === 'index') {
+      return 'layouts/with-landing-navbar';
+    }
 
-  revertCurrentLayout() {
-    this.set('currentLayout', this.previousLayout || 'base');
+    return 'layouts/base';
   }
 }

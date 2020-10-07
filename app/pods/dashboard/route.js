@@ -3,5 +3,4 @@ import AuthenticatedRouteMixin from 'exam-online-frontend/mixins/authenticated-r
 
 const AuthenticatedRoute = Route.extend(AuthenticatedRouteMixin);
 
-export default class DashboardRoute extends AuthenticatedRoute {
-}
+export default class DashboardRoute extends AuthenticatedRoute {}
