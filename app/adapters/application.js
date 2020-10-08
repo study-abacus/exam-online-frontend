@@ -40,11 +40,11 @@ export default class ApplicationAdapter extends JSONAPIAdapter {
         case 'url': {
           let url =  query.custom.url;
           delete query.custom;
-          return `${this._super(...arguments)}/${url}`;
+          return `${super.urlForQuery(...arguments)}/${url}`;
         }
       }
     } else  {
-      return this._super(...arguments);
+      return super.urlForQuery(...arguments);
     }
   }
 }

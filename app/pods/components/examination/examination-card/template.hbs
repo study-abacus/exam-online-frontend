@@ -1,0 +1,12 @@
+<div class="card text-white bg-gradient-{{or this.args.color 'danger'}}">
+  <div class="card-body">
+    <div class="text-value-lg">{{@examination.title}}</div>
+    <div>{{@examination.description}}</div>
+    <div class="progress progress-white progress-xs my-2">
+      <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0"
+        aria-valuemax="100"></div>
+    </div>
+
+    {{yield}}
+  </div>
+</div>

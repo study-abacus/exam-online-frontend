@@ -1,4 +1,8 @@
-<div class="c-sidebar c-sidebar-dark c-sidebar-fixed c-sidebar-lg-show" id="sidebar">
+<div 
+  class="c-sidebar c-sidebar-dark c-sidebar-fixed c-sidebar-lg-show {{if sideBar.isOpen 'c-sidebar-show'}}" 
+  id="sidebar"
+  {{on-click-outside (action "closeSideBar")}}
+>
   <div class="c-sidebar-brand d-lg-down-none">
     <h2>
       Study Abacus
@@ -9,6 +13,12 @@
       <LinkTo class="c-sidebar-nav-link" @route="dashboard" @activeClass="c-active">
         <FaIcon @icon="tachometer-alt" class="mr-3" />
         Dashboard
+      </LinkTo>
+    </li>
+    <li class="c-sidebar-nav-item">
+      <LinkTo class="c-sidebar-nav-link" @route="exams" @activeClass="c-active">
+        <FaIcon @icon="pen" class="mr-3" />
+        Examinations
       </LinkTo>
     </li>
   </ul>

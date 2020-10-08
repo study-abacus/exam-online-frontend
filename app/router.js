@@ -10,4 +10,7 @@ Router.map(function() {
   this.route('register');
   this.route('login');
   this.route('dashboard');
+  this.route('exams', function() {
+    this.route('id', { path: '/:id' });
+  });
 });

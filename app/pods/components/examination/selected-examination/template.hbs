@@ -1,0 +1,22 @@
+<div class="d-flex justify-content-between">
+  <h1>Selected Exams</h1>
+  <button class="btn btn-primary">Apply</button>
+</div>
+
+<div class="row mt-4">
+  {{#each @selectedExaminations as |examination|}}
+    <div class="col-6 col-md-4 col-lg-3">
+      <Examination::ExaminationCard 
+        @examination={{examination}} 
+        @color='success'  
+      >
+        <button 
+          class="btn btn-outline-secondary white mt-2"
+          {{action @onRemove examination}}
+        >
+          Remove
+        </button>
+      </Examination::ExaminationCard>
+    </div>
+  {{/each}}
+</div>
