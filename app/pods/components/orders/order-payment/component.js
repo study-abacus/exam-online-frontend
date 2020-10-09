@@ -3,6 +3,7 @@ import { tracked } from '@glimmer/tracking';
 
 import { dropTask } from 'ember-concurrency-decorators';
 import { inject as service } from '@ember/service';
+import { alias } from '@ember/object/computed';
 
 export default class OrdersOrderPaymentComponent extends Component {
   @service currentUser;
@@ -10,6 +11,8 @@ export default class OrdersOrderPaymentComponent extends Component {
   @service store;
 
   @tracked currentOrder;
+
+  @alias('payNow.last') payNowLastResult
 
   constructor() {
     super(...arguments);
@@ -26,23 +29,23 @@ export default class OrdersOrderPaymentComponent extends Component {
       "name": "Brain 'o' Mind",
       "order_id": this.currentOrder.razorpayOrderId,
       "handler": async response => {
-        console.log(response)
         const resp = await this.api.request(`/orders/${this.currentOrder.id}/capture`, {
           method: 'POST',
           body: JSON.stringify({
             razorpay_payment_id: response.razorpay_payment_id,
-            razorpay_order_id: this.currentOrder.razorpayOrderId
+            razorpay_order_id: response.razorpay_order_id,
+            razorpay_signature: response.razorpay_signature
           })
         });
   
         if (this.args.onAfterPay) {
-          this.onAfterPay()
+          this.args.onAfterPay();
         }
       },
-      //"prefill": {
-      //  "name": this.currentUser.user.name,
-      //  "email": this.currentUser.user.email
-      //}
+      "prefill": {
+        "name": this.currentUser.user.name,
+        "email": this.currentUser.user.email
+      }
     }
   }
 

@@ -10,4 +10,10 @@
   >
     Pay Now
   </button>
+
+  {{#if payNowLastResult.isError}}
+  <div class="red">
+    {{payNowLastResult.error}}
+  </div>
+  {{/if}}
 </div>

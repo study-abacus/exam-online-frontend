@@ -22,7 +22,7 @@ export default class ExaminationSelectedExaminationComponent extends Component {
       })
     });
 
-    const order = yield this.store.findRecord('orders', resp.data.id)
+    const order = yield this.store.findRecord('order', resp.data.id)
     this.set('showPaymentModal', true)
     return order
   }
