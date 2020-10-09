@@ -19,6 +19,12 @@ export default class ApplicationAdapter extends JSONAPIAdapter {
 
     return {};
   }
+
+  async findRecord(store, type, id, snapshot) {
+    const result = await super.findRecord(...arguments);
+    debugger
+    return result
+  }
   
   urlForQueryRecord(query) {
     if(query.custom) {

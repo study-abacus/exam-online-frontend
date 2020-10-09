@@ -1,0 +1,13 @@
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<div class="t-align-c">
+  <h2>Payment Confirmation</h2>
+
+  <h4>{{@order.amountDisplay}}</h4>
+
+  <button 
+    class="btn btn-danger"
+    {{action (perform payNow)}}
+  >
+    Pay Now
+  </button>
+</div>

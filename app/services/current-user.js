@@ -10,7 +10,7 @@ export default class CurrentUserService extends Service {
       return this.user;
     }
 
-    const user = await this.store.queryRecord('user', { 
+    const user = await this.store.queryRecord('users', { 
       custom: {
         ext: 'url',
         url: 'me'

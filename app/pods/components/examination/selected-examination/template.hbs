@@ -1,6 +1,12 @@
 <div class="d-flex justify-content-between">
   <h1>Selected Exams</h1>
-  <button class="btn btn-primary">Apply</button>
+
+  <button 
+    class="btn btn-primary"
+    {{action (perform applyToSelectedExaminations)}}
+  >
+    Apply
+  </button>
 </div>
 
 <div class="row mt-4">
@@ -20,3 +26,16 @@
     </div>
   {{/each}}
 </div>
+
+{{#if showPaymentModal}}
+<ModalDialog
+  @translucentOverlay="true"
+  @containerClass="w-50"
+  @onClose={{action (mut showPaymentModal false)}}
+>
+  <Orders::OrderPayment
+    @order={{lastOrder}}
+    @onAfterPay={{action (mut showPaymentModal false)}}
+  />
+</ModalDialog>
+{{/if}}
