@@ -1,0 +1,53 @@
+<div class="card">
+  <div class="card-header">
+    <strong>
+      User Profile
+    </strong>
+  </div>
+  <div class="card-body">
+    <form class="form-horizontal">
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label">School</label>
+        <div class="col-md-9">
+          <Input 
+            class="form-control" 
+            id="hf-email" 
+            autocomplete="off" 
+            @value={{@profile.school}}
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label">Class</label>
+        <div class="col-md-9">
+          <Input 
+            class="form-control" 
+            id="hf-email" 
+            autocomplete="off" 
+            @value={{@profile.class}}
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label">Current Level</label>
+        <div class="col-md-9">
+          <Input 
+            class="form-control" 
+            id="hf-email" 
+            autocomplete="off" 
+            @value={{@profile.currentLevel}}
+          />
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="card-footer">
+    <button 
+      class="btn btn-sm btn-primary" 
+      {{action (perform saveProfileTask)}}
+      disabled={{saveProfileTask.isRunning}}
+    > 
+      {{if saveProfileTask.isRunning 'Submitting' 'Submit'}}
+    </button>
+  </div>
+</div>

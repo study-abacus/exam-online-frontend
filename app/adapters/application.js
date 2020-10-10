@@ -13,7 +13,8 @@ export default class ApplicationAdapter extends JSONAPIAdapter {
     if (this.session.isAuthenticated) {
       const { jwt } = this.get('session.data.authenticated');
       return {
-        Authorization: `JWT ${jwt}`
+        authorization: `JWT ${jwt}`,
+        'content-type': 'application/json'
       };
     }
 

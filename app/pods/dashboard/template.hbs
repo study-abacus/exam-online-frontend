@@ -2,6 +2,38 @@
 <div class="container">
   <h1>Dashbaord</h1>
 
+  <div class="row mt-4">
+    {{#unless currentUser.user.verified}}
+    <div class="col-md-6">
+      <h2>Unverified Email</h2>
+    </div>
+    {{/unless}}
+    <div class="col-md-6">
+      <div class="d-flex justify-content-between">
+        <h2>Profile</h2>
+        
+        <button 
+          class="btn btn-primary"
+          {{action 'toggleProfileView'}}
+        >
+          {{if (eq currentProfileView 'view') 'Edit Profile' 'View Profile'}}
+        </button>
+      </div>
+
+      <div class="mt-2">
+        {{#if (eq currentProfileView 'view')}}
+          <Profile::ProfileView 
+            @profile={{currentUser.profile}}
+          />
+        {{else if (eq currentProfileView 'edit')}}
+          <Profile::ProfileEditor
+            @profile={{currentUser.profile}}
+          />
+        {{/if}}
+      </div>
+    </div>
+  </div>
+
   <h2 class="mt-4">Applied Exams</h2>
 
   <div class="row class mt-4">
