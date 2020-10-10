@@ -19,4 +19,10 @@ export default class ExamsIndexController extends Controller {
       this.selectedExaminations.removeObject(examination);
     }
   }
+
+  @action 
+  onAfterApply() {
+    this.set('selectedExaminations', []);
+    this.transitionToRoute('dashboard');
+  }
 }

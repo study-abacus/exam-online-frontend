@@ -35,7 +35,7 @@
 >
   <Orders::OrderPayment
     @order={{lastOrder}}
-    @onAfterPay={{action (mut showPaymentModal false)}}
+    @onAfterPay={{action 'onAfterPay'}}
   />
 </ModalDialog>
 {{/if}}
