@@ -1,3 +1,20 @@
-Dashbaord
 
-{{outlet}}
+<div class="container">
+  <h1>Dashbaord</h1>
+
+  <h2 class="mt-4">Applied Exams</h2>
+
+  <div class="row class mt-4">
+    <div class="col-12">
+      <WidgetPack::WAsync
+        @task={{fetchExamAttemptsTask}}
+        @autoFire={{true}}
+        as |examAttempts|
+      >
+        <ExamAttempt::ExamAttemptList 
+          @examAttempts={{examAttempts}}
+        />
+      </WidgetPack::WAsync>
+    </div>
+  </div>
+</div>

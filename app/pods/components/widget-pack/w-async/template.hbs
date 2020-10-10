@@ -1,0 +1,5 @@
+{{#if isLoading}}
+  Loading...
+{{else}}
+  {{yield this.result @task.last.isError}}
+{{/if}}
