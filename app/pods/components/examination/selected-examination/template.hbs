@@ -1,14 +1,12 @@
 <div class="d-flex justify-content-between">
   <h1>Selected Exams</h1>
 
-  {{#unless lastOrder.razorpayOrderId}}
-    <button 
-      class="btn btn-primary"
-      {{action (perform applyToSelectedExaminations)}}
-    >
-      Apply
-    </button>
-  {{/unless}}
+  <button 
+    class="btn btn-primary"
+    {{action (perform applyToSelectedExaminations)}}
+  >
+    Apply
+  </button>
 </div>
 
 <div class="row mt-4">
