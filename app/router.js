@@ -13,4 +13,5 @@ Router.map(function() {
   this.route('exams', function() {
     this.route('id', { path: '/:id' });
   });
+  this.route('verify', { path: 'verify/:token' });
 });

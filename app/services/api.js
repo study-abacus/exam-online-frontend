@@ -29,6 +29,6 @@ export default class ApiService extends FetchService {
 
         return resp;
       })
-      .then(resp => resp.json())
+      .then(resp => resp.status === 204 ? resp : resp.json())
   }
 }

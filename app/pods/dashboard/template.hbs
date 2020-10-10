@@ -6,6 +6,10 @@
     {{#unless currentUser.user.verified}}
     <div class="col-md-6">
       <h2>Unverified Email</h2>
+
+      <div class="mt-4">
+        <VerifyUser />
+      </div>
     </div>
     {{/unless}}
     <div class="col-md-6">

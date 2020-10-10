@@ -1,0 +1,16 @@
+<div class="card">
+  <div class="card-header">
+    <strong>Verify User Profile</strong>
+  </div>
+  <div class="card-body">
+    <div>Verify by clicking on the link sent to your email address</div>
+
+    <button 
+      class="btn btn-success mt-2" 
+      disabled={{sendVerificationLinkTask.isRunning}}
+      {{action (perform sendVerificationLinkTask)}}  
+    >
+      {{if sendVerificationLinkTask.isRunning 'Link Sent' 'Send Verification Email'}}
+    </button>
+  </div>
+</div>
