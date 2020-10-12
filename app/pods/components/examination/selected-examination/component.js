@@ -21,7 +21,11 @@ export default class ExaminationSelectedExaminationComponent extends Component {
       body: JSON.stringify({
         examinationIds
       })
-    });
+    }, false);
+
+    if (resp.errors) {
+      throw new Error(resp.errors[0].title)
+    }
 
     const order = yield this.store.findRecord('order', resp.data.id)
     this.set('showPaymentModal', true)

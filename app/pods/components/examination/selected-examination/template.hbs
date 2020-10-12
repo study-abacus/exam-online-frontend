@@ -1,12 +1,20 @@
 <div class="d-flex justify-content-between">
   <h1>Selected Exams</h1>
 
-  <button 
-    class="btn btn-primary"
-    {{action (perform applyToSelectedExaminations)}}
-  >
-    Apply
-  </button>
+  <div>
+    <button 
+      class="btn btn-primary"
+      {{action (perform applyToSelectedExaminations)}}
+    >
+      Apply
+    </button>
+
+    {{#if applyToSelectedExaminations.last.isError}}
+    <p class="red">
+      {{applyToSelectedExaminations.last.error}}
+    </p>
+    {{/if}}
+  </div>
 </div>
 
 <div class="row mt-4">

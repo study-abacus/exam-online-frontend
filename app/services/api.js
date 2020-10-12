@@ -19,11 +19,11 @@ export default class ApiService extends FetchService {
     };
   }
 
-  request(url, opts) {
+  request(url, opts, throwError = true) {
     return this
       .fetch(ENV.apiHost + '/api' + url, opts)
       .then(resp => {
-        if (!resp.ok) {
+        if (!resp.ok && throwError) {
           throw new Error(`Request failed with status code ${resp.status}`)
         }
 
