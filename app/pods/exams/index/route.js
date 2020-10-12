@@ -3,28 +3,38 @@ import moment from 'moment';
 import { hash } from 'rsvp';
 
 export default class ExamsRoute extends Route {
-  queryParams = {
-    q: {
-      refreshModel: true
-    }
-  };
-
   model(params) {
     return hash({
-      examinations: this.store.query('examination', {
+      abacusExaminations: this.store.query('examination', {
         filter: {
           start: {
             $gt: moment().toISOString()
           },
-          title: {
-            $iLike: `%${params.q}%`
-          }
+          type: 'abacus'
+        }
+      }),
+      vedicExaminations: this.store.query('examination', {
+        filter: {
+          start: {
+            $gt: moment().toISOString()
+          },
+          type: 'vedic-maths'
+        }
+      }),
+      englishExaminations: this.store.query('examination', {
+        filter: {
+          start: {
+            $gt: moment().toISOString()
+          },
+          type: 'english'
         }
       })
     });
   }
 
   setupController(controller, model) {
-    controller.set('examinations', model.examinations);
+    controller.set('abacusExaminations', model.abacusExaminations);
+    controller.set('vedicExaminations', model.vedicExaminations);
+    controller.set('englishExaminations', model.englishExaminations);
   }
 }

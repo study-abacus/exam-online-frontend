@@ -4,6 +4,7 @@ import { computed } from '@ember/object';
 export default class ExaminationModel extends Model {
   @attr() title;
   @attr() description;
+  @attr() type;
   @attr() primaryPrice;
   @attr() secondaryPrice;
   @attr() start;

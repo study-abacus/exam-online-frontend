@@ -1,0 +1,20 @@
+<table class="table table-responsive-sm table-bordered">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Date</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each @examinations as |examination|}}
+      <tr>
+        <td class="text-value-md">{{examination.title}}</td>
+        <td>{{moment-format examination.start 'DD-MM-YYYY hh:mm'}}</td>
+        <td>
+          {{yield examination}}
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
