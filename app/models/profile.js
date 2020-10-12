@@ -9,11 +9,11 @@ export default class ProfileModel extends Model {
   @attr() address;
   @attr() city;
   @attr() currentCourse;
-  @attr() currentLevel;
+  @attr({ defaultValue: [] }) currentLevel;
   @belongsTo('user') user;
 
   @computed('currentCourse')
   get currentCourseDisplay() {
-    return this.currentCourse.join(', ')
+    return this.currentCourse?.join(', ') || ''
   }
 }
