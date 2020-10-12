@@ -1,9 +1,11 @@
 import JSONAPIAdapter from '@ember-data/adapter/json-api';
-import { isPresent } from '@ember/utils';
+import DataAdapterMixin from 'ember-simple-auth/mixins/data-adapter-mixin';
 import { inject as service } from '@ember/service';
 import ENV from 'exam-online-frontend/config/environment';
 
-export default class ApplicationAdapter extends JSONAPIAdapter {
+const AuthAdapter = JSONAPIAdapter.extend(DataAdapterMixin)
+
+export default class ApplicationAdapter extends AuthAdapter {
   @service session;
 
   host = ENV.apiHost
