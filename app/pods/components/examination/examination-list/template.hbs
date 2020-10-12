@@ -1,8 +1,8 @@
 <table class="table table-responsive-sm table-bordered">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Date</th>
+      <th>Exam</th>
+      <th>Code</th>
       <th>Actions</th>
     </tr>
   </thead>
@@ -10,7 +10,7 @@
     {{#each @examinations as |examination|}}
       <tr>
         <td class="text-value-md">{{examination.title}}</td>
-        <td>{{moment-format examination.start 'DD-MM-YYYY hh:mm'}}</td>
+        <td>{{examination.description}}</td>
         <td>
           {{yield examination}}
         </td>
