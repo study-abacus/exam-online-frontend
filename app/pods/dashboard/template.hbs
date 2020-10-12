@@ -27,10 +27,12 @@
       <div class="mt-2">
         {{#if (eq currentProfileView 'view')}}
           <Profile::ProfileView 
+            @user={{currentUser.user}}
             @profile={{currentUser.profile}}
           />
         {{else if (eq currentProfileView 'edit')}}
           <Profile::ProfileEditor
+            @user={{currentUser.user}}
             @profile={{currentUser.profile}}
           />
         {{/if}}

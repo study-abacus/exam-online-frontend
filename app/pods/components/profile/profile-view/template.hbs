@@ -7,14 +7,57 @@
   <div class="card-body">
     <form class="form-horizontal">
       <div class="form-group row">
-        <label class="col-md-3 col-form-label">School</label>
+        <label class="col-md-3 col-form-label">Student's Name</label>
         <div class="col-md-9">
           <Input 
             class="form-control" 
-            id="hf-email" 
             autocomplete="off" 
             @disabled={{true}}
-            @value={{@profile.school}}
+            @value={{@user.name}}
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label">Father's / Mother's Name</label>
+        <div class="col-md-9">
+          <Input 
+            class="form-control" 
+            autocomplete="off" 
+            @disabled={{true}}
+            @value={{@profile.guardianName}}
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label">Contact Number (Preferably Whatsapp)</label>
+        <div class="col-md-9">
+          <Input 
+            class="form-control" 
+            autocomplete="off" 
+            @disabled={{true}}
+            @value={{@profile.contact}}
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label">Address</label>
+        <div class="col-md-9">
+          <Textarea 
+            class="form-control"
+            rows="3" 
+            placeholder="Address" 
+            @disabled={{true}}
+            @value={{@profile.address}} />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label">City</label>
+        <div class="col-md-9">
+          <Input 
+            class="form-control" 
+            autocomplete="off" 
+            @disabled={{true}}
+            @value={{@profile.city}}
           />
         </div>
       </div>
@@ -23,10 +66,31 @@
         <div class="col-md-9">
           <Input 
             class="form-control" 
-            id="hf-email" 
             autocomplete="off" 
             @disabled={{true}}
             @value={{@profile.class}}
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label">School</label>
+        <div class="col-md-9">
+          <Input 
+            class="form-control" 
+            autocomplete="off" 
+            @disabled={{true}}
+            @value={{@profile.school}}
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label">Current Course(s)</label>
+        <div class="col-md-9">
+          <Input 
+            class="form-control" 
+            autocomplete="off" 
+            @disabled={{true}}
+            @value={{@profile.currentCourseDisplay}}
           />
         </div>
       </div>
@@ -35,7 +99,6 @@
         <div class="col-md-9">
           <Input 
             class="form-control" 
-            id="hf-email" 
             autocomplete="off" 
             @disabled={{true}}
             @value={{@profile.currentLevel}}
