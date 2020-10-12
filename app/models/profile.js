@@ -8,6 +8,7 @@ export default class ProfileModel extends Model {
   @attr() contact;
   @attr() address;
   @attr() city;
+  @attr({ defaultValue: 'India' }) country;
   @attr() currentCourse;
   @attr({ defaultValue: [] }) currentLevel;
   @belongsTo('user') user;
