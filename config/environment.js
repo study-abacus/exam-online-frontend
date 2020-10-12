@@ -35,6 +35,7 @@ module.exports = function(environment) {
 
   if (environment === 'development') {
     ENV.apiHost = 'http://localhost:6969'
+    ENV.RazorpayId = 'rzp_test_Ou4rWUqLrEoS8l'
   }
 
   if (environment === 'test') {
@@ -51,6 +52,7 @@ module.exports = function(environment) {
 
   if (environment === 'production') {
     ENV.apiHost = 'https://examination-api.studyabacus.com'
+    ENV.RazorpayId = 'rzp_live_MRHWfWL1TIFK51'
   }
 
   ENV['ember-simple-auth'] = {

@@ -4,6 +4,7 @@ import { tracked } from '@glimmer/tracking';
 import { dropTask } from 'ember-concurrency-decorators';
 import { inject as service } from '@ember/service';
 import { alias } from '@ember/object/computed';
+import ENV from 'exam-online-frontend/config/environment';
 
 export default class OrdersOrderPaymentComponent extends Component {
   @service currentUser;
@@ -23,7 +24,7 @@ export default class OrdersOrderPaymentComponent extends Component {
     if (!this.currentOrder) return {}
 
     return {
-      "key": "rzp_test_Ou4rWUqLrEoS8l",
+      "key": ENV.RazorpayId,
       "amount": this.currentOrder.amount,
       "currency": "INR",
       "name": "Brain 'o' Mind",
