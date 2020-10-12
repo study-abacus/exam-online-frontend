@@ -29,23 +29,28 @@ export default class OrdersOrderPaymentComponent extends Component {
       "name": "Brain 'o' Mind",
       "order_id": this.currentOrder.razorpayOrderId,
       "handler": async response => {
-        const resp = await this.api.request(`/orders/${this.currentOrder.id}/capture`, {
-          method: 'POST',
-          body: JSON.stringify({
-            razorpay_payment_id: response.razorpay_payment_id,
-            razorpay_order_id: response.razorpay_order_id,
-            razorpay_signature: response.razorpay_signature
-          })
-        });
-  
-        if (this.args.onAfterPay) {
-          this.args.onAfterPay();
-        }
+        this.capturePayment.perform(response);
       },
       "prefill": {
         "name": this.currentUser.user.name,
         "email": this.currentUser.user.email
       }
+    }
+  }
+
+  @dropTask
+  *capturePayment(response) {
+    const resp = yield this.api.request(`/orders/${this.currentOrder.id}/capture`, {
+      method: 'POST',
+      body: JSON.stringify({
+        razorpay_payment_id: response.razorpay_payment_id,
+        razorpay_order_id: response.razorpay_order_id,
+        razorpay_signature: response.razorpay_signature
+      })
+    });
+
+    if (this.args.onAfterPay) {
+      this.args.onAfterPay();
     }
   }
 

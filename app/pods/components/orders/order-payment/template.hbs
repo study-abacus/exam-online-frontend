@@ -6,9 +6,10 @@
 
   <button 
     class="btn btn-danger"
+    disabled={{capturePayment.isRunning}}
     {{action (perform payNow)}}
   >
-    Pay Now
+    {{if capturePayment.isRunning 'Paying' 'Pay Now'}}
   </button>
 
   {{#if payNowLastResult.isError}}
