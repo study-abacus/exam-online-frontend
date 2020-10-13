@@ -1,5 +1,5 @@
 import Controller from '@ember/controller';
-import { action } from '@ember/object';
+import { dropTask } from 'ember-concurrency-decorators';
 import { inject as service } from '@ember/service';
 
 export default class LoginController extends Controller {
@@ -9,16 +9,13 @@ export default class LoginController extends Controller {
   email = '';
   password = '';
 
-  @action
-  login() {
-    this.session
-      .authenticate('authenticator:jwt', {
-        email: this.email,
-        password: this.password
-      })
-      .then(() => this.currentUser.load())
-      .then(() => {
-        this.transitionToRoute('dashboard')
-      })
+  @dropTask
+  *login() {
+    yield this.session.authenticate('authenticator:jwt', {
+      email: this.email,
+      password: this.password
+    })
+    yield this.currentUser.load()
+    this.transitionToRoute('dashboard')
   }
 }
