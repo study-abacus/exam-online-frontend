@@ -17,5 +17,9 @@ export default class ProfileProfileEditorComponent extends Component {
     if (this.args.profile.hasDirtyAttributes) {
       yield this.args.profile.save();
     }
+
+    if (this.args.onAfterSave()) {
+      this.args.onAfterSave();
+    }
   }
 }

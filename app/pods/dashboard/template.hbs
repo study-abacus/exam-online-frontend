@@ -34,6 +34,7 @@
           <Profile::ProfileEditor
             @user={{currentUser.user}}
             @profile={{currentUser.profile}}
+            @onAfterSave={{action (mut currentProfileView) 'view'}}
           />
         {{/if}}
       </div>
