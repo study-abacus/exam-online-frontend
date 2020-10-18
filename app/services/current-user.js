@@ -18,7 +18,7 @@ export default class CurrentUserService extends Service {
 
     const profile = await user.profile;
     if (profile) {
-      this.set('profile', profile)
+      this.set('profile', await this.store.findRecord('profile', user.profile.get('id')))
     } else {
       this.set('profile', this.store.createRecord('profile', {
         school: '',

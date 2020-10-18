@@ -39,21 +39,21 @@
         {{/if}}
       </div>
     </div>
-  </div>
+    
+    <div class="col-md-6 mt-4 mt-md-0">
+      <h2>Applied Exams</h2>
 
-  <h2 class="mt-4">Applied Exams</h2>
-
-  <div class="row class mt-4">
-    <div class="col-12">
-      <WidgetPack::WAsync
-        @task={{fetchExamAttemptsTask}}
-        @autoFire={{true}}
-        as |examAttempts|
-      >
-        <ExamAttempt::ExamAttemptList 
-          @examAttempts={{examAttempts}}
-        />
-      </WidgetPack::WAsync>
+      <div class="mt-4">
+        <WidgetPack::WAsync
+          @task={{fetchExamAttemptsTask}}
+          @autoFire={{true}}
+          as |examAttempts|
+        >
+          <ExamAttempt::ExamAttemptList 
+            @examAttempts={{examAttempts}}
+          />
+        </WidgetPack::WAsync>
+      </div>
     </div>
   </div>
 </div>
