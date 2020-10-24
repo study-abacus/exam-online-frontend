@@ -1,4 +1,4 @@
-import Model, { attr } from '@ember-data/model';
+import Model, { attr, hasMany, belongsTo } from '@ember-data/model';
 import { computed } from '@ember/object';
 
 export default class ExaminationModel extends Model {
@@ -9,6 +9,8 @@ export default class ExaminationModel extends Model {
   @attr() secondaryPrice;
   @attr() start;
   @attr() registrationEnd;
+  @hasMany('question') questions;
+  @belongsTo('exam-attempt') examAttempt;
 
   @computed('primaryPrice')
   get primaryPriceDisplay() {
