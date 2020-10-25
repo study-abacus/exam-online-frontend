@@ -5600,6 +5600,15 @@ ember-text-measurer@^0.6.0:
     ember-cli-babel "^7.19.0"
     ember-cli-htmlbars "^4.3.1"
 
+ember-timer@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/ember-timer/-/ember-timer-1.1.0.tgz#b90fb6dd7b32a1863fe405d61700f0b1f0461311"
+  integrity sha512-pTBPfcS7UD74EMs3gfC03Y5sY6Y/wDeCevefKqpAvz6Qc6QPaRF9yooNVwOzfU2/lGUOd6kM6Sx8mz7i55nmdQ==
+  dependencies:
+    ember-cli-babel "^7.7.3"
+    ember-cli-htmlbars "^3.0.1"
+    ember-cli-htmlbars-inline-precompile "^2.1.0"
+
 ember-truth-helpers@2.1.0, ember-truth-helpers@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/ember-truth-helpers/-/ember-truth-helpers-2.1.0.tgz#d4dab4eee7945aa2388126485977baeb33ca0798"
