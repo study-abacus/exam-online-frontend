@@ -2,6 +2,8 @@
   <td>{{@examAttempt.id}}</td>
   <td>{{@examAttempt.examination.title}}</td>
   <td>
-    <a href="#" class="btn btn-success">Admit Card</a>
+    <LinkTo @route="exams.id" @model="{{@examAttempt.examination.id}}">
+      <button class="btn btn-success">View Exam</button>
+    </LinkTo>
   </td>
 </tr>

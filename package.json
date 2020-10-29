@@ -58,6 +58,7 @@
     "ember-simple-auth-token": "^5.2.0",
     "ember-source": "~3.21.1",
     "ember-template-lint": "^2.11.0",
+    "ember-timer": "^1.1.0",
     "ember-truth-helpers": "^2.1.0",
     "ember-welcome-page": "^4.0.0",
     "eslint": "^7.8.0",
