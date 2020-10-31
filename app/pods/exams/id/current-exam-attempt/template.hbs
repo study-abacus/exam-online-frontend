@@ -1,1 +1,12 @@
-{{outlet}}
+<h2>Questions</h2>
+{{#each @model.examinationData.questions as |question|}}
+  <Question::QuestionList
+    @questionDetails={{question}}
+  >
+    <button 
+      class="btn btn-primary mt-2"
+    >
+    Solve
+    </button>
+  </Question::QuestionList>
+{{/each}}
