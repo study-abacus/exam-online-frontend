@@ -1,28 +1,85 @@
-<table class="table table-responsive-sm table-bordered">
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Type</th>
-      <th>Starts In</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>{{@model.examinationData.title}}</td>
-      <td>{{@model.examinationData.description}}</td>
-      <td>{{@model.examinationData.type}}</td>
-      <td>
-        <Timer @to={{moment @model.examinationData.start}} @onEnd={{action "onEnd"}} as |t|>
-            DaysLeft: {{t.days}}
-            HoursLeft: {{t.hours}}
-            MinutesLeft: {{t.minutes}}
-            SecondsLeft: {{t.seconds}}
-        </Timer>
-      </td>
-    </tr>
-  </tbody>
-</table>
-<LinkTo @route="exams.id.current-exam-attempt">
-  <button class="btn btn-primary">Start Exam</button>
-</LinkTo>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col">
+      <div class="card text-white bg-success">
+        <div class="row align-items-center card-body">
+          <div class="col-md-6">
+            <h2>
+              {{@model.examination.title}}
+            </h2>
+          </div>
+          <div class="col-md-6 text-center">
+            {{#if (is-after @model.examination.examAttempt.start)}}
+              <LinkTo @route="exams.id.current-exam-attempt">
+                <button class="btn btn-primary">Start Exam</button>
+              </LinkTo>
+            {{else}}
+              <Timer @to={{moment @model.examination.examAttempt.start}} @onEnd={{action "onEnd"}} as |t|>
+                <div class="d-flex justify-content-center">
+                  <div class="d-flex flex-col align-items-center mx-3">
+                    <div>Days</div>
+                    <h3>
+                      <strong>{{t.days}}</strong>  
+                    </h3>
+                  </div>
+                  <div class="d-flex flex-col align-items-center mx-3">
+                    <div>Hours</div>
+                    <h3>
+                      <strong>{{t.hours}}</strong>  
+                    </h3>
+                  </div>
+                  <div class="d-flex flex-col align-items-center mx-3">
+                    <div>Minutes</div>
+                    <h3>
+                      <strong>{{t.minutes}}</strong>  
+                    </h3>
+                  </div>
+                  <div class="d-flex flex-col align-items-center mx-3">
+                    <div>Seconds</div>
+                    <h3>
+                      <strong>{{t.seconds}}</strong>  
+                    </h3>
+                  </div>
+                </div>
+              </Timer>
+            {{/if}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card border-primary">
+        <div class="card-header">
+          <strong>Description</strong>
+        </div>
+        <div class="card-body">
+          {{@model.examination.description}}
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card border-primary">
+        <div class="card-header">
+          <strong>Sample Papers</strong>
+        </div>
+        <div class="card-body">
+          {{#if @model.examination.practicePapers.length}}
+            <div class="list-group">
+              {{#each @model.examination.practicePapers as |practicePaper|}}
+                <a 
+                  href="{{practicePaper.documentUrl}}" 
+                  class="list-group-item list-group-item-action">
+                  {{practicePaper.title}}
+                </a>
+              {{/each}}
+            </div>
+          {{else}}
+            <div class="text-center">No Practice paper for this Examination yet</div>
+          {{/if}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

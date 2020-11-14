@@ -10,6 +10,7 @@ export default class ExaminationModel extends Model {
   @attr() start;
   @attr() registrationEnd;
   @hasMany('question') questions;
+  @hasMany('practice-paper') practicePapers;
   @belongsTo('exam-attempt') examAttempt;
 
   @computed('primaryPrice')
