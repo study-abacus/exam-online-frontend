@@ -1,5 +1,7 @@
 <div class="c-wrapper c-fixed-components">
-  <ExamAttempt::ExamAttemptHeader />
+  <ExamAttempt::ExamAttemptHeader 
+    @examAttempt={{@model.examination.examAttempt}}
+  />
 
   <div class="c-body p-4">
     <div class="container">
@@ -18,6 +20,12 @@
             @currentQuestion={{@model.currentQuestion}}
             @onNavigate={{action (mut q)}}
           />
+          <button 
+            class="btn btn-block btn-danger"
+            {{action (perform submitTest)}}
+          >
+            End Test
+          </button>
         </div>
       </div>
     </div>

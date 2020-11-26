@@ -13,6 +13,7 @@ Router.map(function() {
   this.route('exams', function() {
     this.route('id', { path: '/:id' }, function() {
       this.route('current-exam-attempt');
+      this.route('thank-you');
     });
   });
   this.route('verify', { path: 'verify/:token' });

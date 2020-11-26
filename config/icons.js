@@ -6,7 +6,8 @@ module.exports = function() {
       'pen',
       'user',
       'lock',
-      'envelope'
+      'envelope',
+      'check'
     ]
   };
 };

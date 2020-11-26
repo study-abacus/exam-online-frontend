@@ -11,6 +11,7 @@ export default class ExamsIdCurrentExamAttemptRoute extends Route {
   async model(params) {
     const { q } = params;
     const { examination } = this.modelFor('exams.id');
+    const examAttempt = examination.examAttempt;
     const questions = await examination.questions;
     const currentQuestion = questions.toArray()[q || 0];
     const questionAttempts = this.store.query('question-attempt', {
@@ -23,6 +24,7 @@ export default class ExamsIdCurrentExamAttemptRoute extends Route {
     return hash({
       examination,
       questions,
+      examAttempt,
       currentQuestion,
       questionAttempts
     });

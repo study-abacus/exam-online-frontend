@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="d-flex justify-content-center">
+    <div class="card text-white bg-success text-center">
+      <div class="card-body">
+        <FaIcon @icon="check" @size="4x" />
+        <h1>Congratulations !</h1>
+        <h5>Your exam has been submitted and you will be scored shortly</h5>
+        <h6>
+          Time Taken: {{moment-diff @model.examAttempt.start @model.examAttempt.submittedAt precision='seconds'}} Seconds
+        </h6>
+      </div>
+    </div>
+  </div>
+</div>
