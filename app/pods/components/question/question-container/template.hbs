@@ -1,0 +1,30 @@
+<h2>{{@question.title}}</h2>
+<div class="h5">
+  {{@question.description}}
+</div>
+
+<Textarea 
+  class="form-control"
+  rows="3" 
+  placeholder="Type your answer here..." 
+  @value={{answer}}
+/>
+
+<div class="d-flex justify-content-between">
+  <div>
+    <button 
+      class="btn btn-block btn-warning mt-3"
+      {{action (perform toggleReviewTask)}}
+    >
+      {{if @question.questionAttempt.willReview 'Unreview' 'Review Later'}}
+    </button>
+  </div>
+  <div>
+    <button 
+      class="btn btn-block btn-primary mt-3"
+      {{action (perform markAnswerTask) answer}}
+    >
+      Submit
+    </button>
+  </div>
+</div>

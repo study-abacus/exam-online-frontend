@@ -1,12 +1,25 @@
-<h2>Questions</h2>
-{{#each @model.examination.questions as |question|}}
-  <Question::QuestionList
-    @questionDetails={{question}}
-  >
-    <button 
-      class="btn btn-primary mt-2"
-    >
-    Solve
-    </button>
-  </Question::QuestionList>
-{{/each}}
+<div class="c-wrapper c-fixed-components">
+  <ExamAttempt::ExamAttemptHeader />
+
+  <div class="c-body p-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-7">
+          {{#if @model.currentQuestion}}
+            <Question::QuestionContainer 
+              @question={{@model.currentQuestion}}
+              @onAfterAnswer={{action 'nextQuestion'}}
+            />  
+          {{/if}}
+        </div>
+        <div class="col-md-5">
+          <Question::QuestionNavigation
+            @questions={{@model.questions}}
+            @currentQuestion={{@model.currentQuestion}}
+            @onNavigate={{action (mut q)}}
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

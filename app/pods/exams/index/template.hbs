@@ -1,57 +1,60 @@
-{{#if this.selectedExaminations.length}}
-  <Examination::SelectedExamination 
-    @selectedExaminations={{this.selectedExaminations}}
-    @onRemove={{action 'removeExamination'}}
-    @onAfterApply={{action 'onAfterApply'}}
-  />
-{{/if}}
+<div class="container">
 
-<h1>Upcoming Exams</h1>
+  {{#if this.selectedExaminations.length}}
+    <Examination::SelectedExamination 
+      @selectedExaminations={{this.selectedExaminations}}
+      @onRemove={{action 'removeExamination'}}
+      @onAfterApply={{action 'onAfterApply'}}
+    />
+  {{/if}}
 
-<h2 class="mt-4">Abacus</h2>
-<div class="mt-3">
-  <Examination::ExaminationList
-    @examinations={{abacusExaminations}}
-    as |examination|
-  >
-    <button 
-      class="btn btn-primary mt-2"
-      disabled={{includes selectedExaminations examination}}
-      {{action 'selectExamination' examination}}
+  <h1>Upcoming Exams</h1>
+
+  <h2 class="mt-4">Abacus</h2>
+  <div class="mt-3">
+    <Examination::ExaminationList
+      @examinations={{abacusExaminations}}
+      as |examination|
     >
-      {{if (includes selectedExaminations examination) 'Enrolled' 'Enroll'}}
-    </button>
-  </Examination::ExaminationList>
-</div>
+      <button 
+        class="btn btn-primary mt-2"
+        disabled={{includes selectedExaminations examination}}
+        {{action 'selectExamination' examination}}
+      >
+        {{if (includes selectedExaminations examination) 'Enrolled' 'Enroll'}}
+      </button>
+    </Examination::ExaminationList>
+  </div>
 
-<h2 class="mt-4">Vedic Maths</h2>
-<div class="mt-3">
-  <Examination::ExaminationList
-    @examinations={{vedicExaminations}}
-    as |examination|
-  >
-    <button 
-      class="btn btn-primary mt-2"
-      disabled={{includes selectedExaminations examination}}
-      {{action 'selectExamination' examination}}
+  <h2 class="mt-4">Vedic Maths</h2>
+  <div class="mt-3">
+    <Examination::ExaminationList
+      @examinations={{vedicExaminations}}
+      as |examination|
     >
-      {{if (includes selectedExaminations examination) 'Enrolled' 'Enroll'}}
-    </button>
-  </Examination::ExaminationList>
-</div>
+      <button 
+        class="btn btn-primary mt-2"
+        disabled={{includes selectedExaminations examination}}
+        {{action 'selectExamination' examination}}
+      >
+        {{if (includes selectedExaminations examination) 'Enrolled' 'Enroll'}}
+      </button>
+    </Examination::ExaminationList>
+  </div>
 
-<h2 class="mt-4">Xpress English</h2>
-<div class="mt-3">
-  <Examination::ExaminationList
-    @examinations={{englishExaminations}}
-    as |examination|
-  >
-    <button 
-      class="btn btn-primary mt-2"
-      disabled={{includes selectedExaminations examination}}
-      {{action 'selectExamination' examination}}
+  <h2 class="mt-4">Xpress English</h2>
+  <div class="mt-3">
+    <Examination::ExaminationList
+      @examinations={{englishExaminations}}
+      as |examination|
     >
-      {{if (includes selectedExaminations examination) 'Enrolled' 'Enroll'}}
-    </button>
-  </Examination::ExaminationList>
+      <button 
+        class="btn btn-primary mt-2"
+        disabled={{includes selectedExaminations examination}}
+        {{action 'selectExamination' examination}}
+      >
+        {{if (includes selectedExaminations examination) 'Enrolled' 'Enroll'}}
+      </button>
+    </Examination::ExaminationList>
+  </div>
 </div>
