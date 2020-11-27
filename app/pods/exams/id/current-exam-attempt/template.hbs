@@ -23,7 +23,7 @@
           />
           <button 
             class="btn btn-block btn-danger"
-            {{action (perform submitTest)}}
+            {{action (mut showSubmitConfirmationModal) true}}
           >
             End Test
           </button>
@@ -32,3 +32,31 @@
     </div>
   </div>
 </div>
+
+{{#if showSubmitConfirmationModal}}
+<ModalDialog
+  @translucentOverlay="true"
+  @onClose={{action (mut showSubmitConfirmationModal false)}}
+>
+  <h4>Are you sure you want to end your test</h4>
+  <div class="d-flex justify-content-center justify-content-md-end">
+    <div class="mr-4">
+      <button 
+        class="btn btn-block btn-info"
+        {{action (mut showSubmitConfirmationModal false)}}
+      >
+        Cancel
+      </button>
+    </div>
+    <div>
+      <button 
+        class="btn btn-block btn-danger"
+        {{action (perform submitTest)}}
+        disabled={{submitTest.isRunning}}
+      >
+        {{if submitTest.isRunning 'Submitting' 'Submit'}}
+      </button>
+    </div>
+  </div>
+</ModalDialog>
+{{/if}}

@@ -9,6 +9,7 @@ export default class ExamsIdCurrentExamAttemptController extends Controller {
 
   queryParams = ['q'];
   q = null;
+  showSubmitConfirmationModal = false;
 
   @action
   nextQuestion() {
