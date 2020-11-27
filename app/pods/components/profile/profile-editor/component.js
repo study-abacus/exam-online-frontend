@@ -35,6 +35,10 @@ export default class ProfileProfileEditorComponent extends Component {
 
   @dropTask
   *saveProfileTask() {
+    if (this.args.profile.teacher) {
+      this.args.profile.set('teacher', null);
+    }
+
     if (this.args.user.hasDirtyAttributes) {
       yield this.args.user.save();
     }
