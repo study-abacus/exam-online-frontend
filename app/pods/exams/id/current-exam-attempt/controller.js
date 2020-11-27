@@ -13,7 +13,12 @@ export default class ExamsIdCurrentExamAttemptController extends Controller {
   @action
   nextQuestion() {
     if (this.q && this.q < (this.model.questions.length - 1)) {
-      this.set('q', this.q ? +this.q + 1 : 1);
+      this.set('q', +this.q + 1);
+      return;
+    }
+
+    if (this.model.questions.length > 1) {
+      this.set('q', 1);
     }
   }
 

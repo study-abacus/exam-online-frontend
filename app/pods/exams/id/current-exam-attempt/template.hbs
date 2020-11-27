@@ -8,6 +8,7 @@
       <div class="row">
         <div class="col-md-7">
           {{#if @model.currentQuestion}}
+            <strong>Question {{if q (inc q) '1'}}</strong>
             <Question::QuestionContainer 
               @question={{@model.currentQuestion}}
               @onAfterAnswer={{action 'nextQuestion'}}
