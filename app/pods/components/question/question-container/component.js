@@ -1,6 +1,7 @@
 import Component from '@ember/component';
 import { inject as service } from '@ember/service';
 import { dropTask } from 'ember-concurrency-decorators';
+import { computed } from '@ember/object';
 
 export default class QuestionQuestionContainerComponent extends Component {
   @service api;
@@ -10,6 +11,14 @@ export default class QuestionQuestionContainerComponent extends Component {
 
   didReceiveAttrs() {
     this.set('answer', this.question.get('questionAttempt.answer'));
+  }
+
+  @computed('question.type')
+  get questionInputComponent() {
+    switch(this.question.type) {
+      case 'mcq': return 'question/question-container/mcq-question';
+      default: return 'question/question-container/text-question';
+    }
   }
 
   @dropTask

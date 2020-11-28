@@ -1,0 +1,62 @@
+<div class="c-wrapper c-fixed-components">
+  <ExamAttempt::ExamAttemptHeader 
+    @examAttempt={{@model.examination.examAttempt}}
+  />
+
+  <div class="c-body p-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-7">
+          {{#if @model.currentQuestion}}
+            <strong>Question {{if q (inc q) '1'}}</strong>
+            <Question::QuestionContainer 
+              @question={{@model.currentQuestion}}
+              @onAfterAnswer={{action 'nextQuestion'}}
+            />  
+          {{/if}}
+        </div>
+        <div class="col-md-5">
+          <Question::QuestionNavigation
+            @questions={{@model.questions}}
+            @currentQuestion={{@model.currentQuestion}}
+            @onNavigate={{action (mut q)}}
+          />
+          <button 
+            class="btn btn-block btn-danger"
+            {{action (mut showSubmitConfirmationModal) true}}
+          >
+            End Test
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{#if showSubmitConfirmationModal}}
+<ModalDialog
+  @translucentOverlay="true"
+  @onClose={{action (mut showSubmitConfirmationModal false)}}
+>
+  <h4>Are you sure you want to end your test</h4>
+  <div class="d-flex justify-content-center justify-content-md-end">
+    <div class="mr-4">
+      <button 
+        class="btn btn-block btn-info"
+        {{action (mut showSubmitConfirmationModal false)}}
+      >
+        Cancel
+      </button>
+    </div>
+    <div>
+      <button 
+        class="btn btn-block btn-danger"
+        {{action (perform submitTest)}}
+        disabled={{submitTest.isRunning}}
+      >
+        {{if submitTest.isRunning 'Submitting' 'Submit'}}
+      </button>
+    </div>
+  </div>
+</ModalDialog>
+{{/if}}

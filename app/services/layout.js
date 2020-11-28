@@ -11,7 +11,7 @@ export default class LayoutService extends Service {
       if (!this.router.currentRoute) { return 'layouts/with-navbar-sidebar' }
 
       switch(this.router.currentRoute.name) {
-        case 'exams.id.current-exam-attempt': return 'layouts/base'
+        case 'exams.id.current-exam-attempt.index': return 'layouts/base'
         default: return 'layouts/with-navbar-sidebar'
       }
     }

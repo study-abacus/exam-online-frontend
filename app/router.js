@@ -12,7 +12,7 @@ Router.map(function() {
   this.route('dashboard');
   this.route('exams', function() {
     this.route('id', { path: '/:id' }, function() {
-      this.route('current-exam-attempt');
+      this.route('current-exam-attempt', function() {});
       this.route('thank-you');
     });
   });

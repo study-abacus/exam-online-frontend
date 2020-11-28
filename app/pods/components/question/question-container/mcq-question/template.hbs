@@ -1,0 +1,14 @@
+<div class="form-group">
+  {{#each @question.choices as |choice|}}
+    <div class="form-check h4">
+      <Input 
+        id="{{choice.id}}"
+        type="radio"
+        class="form-check-input" 
+        checked={{eq choice.title @answer}}
+        onclick={{action (mut @answer) choice.title}}
+      />
+      <label class="form-check-label" for="{{choice.id}}">{{choice.title}}</label>
+    </div>
+  {{/each}}
+</div>
