@@ -12,6 +12,22 @@
       </div>
     </div>
     {{/unless}}
+    <div class="col-md-6 mt-4 mt-md-0">
+      <h2>Applied Exams</h2>
+
+      <div class="mt-4">
+        <WidgetPack::WAsync
+          @task={{fetchExamAttemptsTask}}
+          @autoFire={{true}}
+          as |examAttempts|
+        >
+          <ExamAttempt::ExamAttemptList 
+            @examAttempts={{examAttempts}}
+          />
+        </WidgetPack::WAsync>
+      </div>
+    </div>
+    
     <div class="col-md-6">
       <div class="d-flex justify-content-between">
         <h2>Profile</h2>
@@ -37,22 +53,6 @@
             @onAfterSave={{action (mut currentProfileView) 'view'}}
           />
         {{/if}}
-      </div>
-    </div>
-    
-    <div class="col-md-6 mt-4 mt-md-0">
-      <h2>Applied Exams</h2>
-
-      <div class="mt-4">
-        <WidgetPack::WAsync
-          @task={{fetchExamAttemptsTask}}
-          @autoFire={{true}}
-          as |examAttempts|
-        >
-          <ExamAttempt::ExamAttemptList 
-            @examAttempts={{examAttempts}}
-          />
-        </WidgetPack::WAsync>
       </div>
     </div>
   </div>

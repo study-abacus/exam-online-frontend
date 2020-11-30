@@ -3,11 +3,11 @@
     <tr>
       <th>ID</th>
       <th>Examination</th>
+      <th>Start Time</th>
       <th>Actions</th>
     </tr>
   </thead>
   <tbody>
-    {{log @examAttempts}}
     {{#each @examAttempts as |examAttempt|}}
       <ExamAttempt::ExamAttemptListRow
         @examAttempt={{examAttempt}}

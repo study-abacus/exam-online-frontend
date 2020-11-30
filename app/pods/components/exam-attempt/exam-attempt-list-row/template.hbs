@@ -1,6 +1,7 @@
 <tr>
   <td>{{@examAttempt.id}}</td>
   <td>{{@examAttempt.examination.title}}</td>
+  <td>{{moment-format @examAttempt.start 'DD MMM YYYY hh:mm'}}</td>
   <td>
     <LinkTo @route="exams.id" @model="{{@examAttempt.examination.id}}">
       <button class="btn btn-success">View Exam</button>
