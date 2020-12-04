@@ -17,4 +17,5 @@ Router.map(function() {
     });
   });
   this.route('verify', { path: 'verify/:token' });
+  this.route('forgot-password');
 });

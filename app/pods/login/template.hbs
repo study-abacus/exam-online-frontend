@@ -24,7 +24,7 @@
                 <Input class="form-control" type="password" placeholder="Password" autocomplete="off" @value={{password}} />
               </div>
               <div class="row">
-                <div class="col-6">
+                <div class="col-12">
                   <button 
                     class="btn btn-primary px-4" 
                     type="button" 
@@ -39,6 +39,9 @@
                       Invalid Email ID or password
                     </div>
                   {{/if}}
+                </div>
+                <div class="col-12">
+                  <LinkTo @route="forgot-password" class="">Forgot your password?</LinkTo>
                 </div>
               </div>
             </div>
