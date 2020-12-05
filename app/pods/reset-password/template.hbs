@@ -1,0 +1,63 @@
+<div class="d-flex flex-col align-items-center w-100">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card mx-4">
+          <div class="card-body p-4">
+            <h1>Reset Password</h1>
+            <p class="text-muted">Reset you password</p>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <div class="input-group-text">
+                  <FaIcon @icon="lock" />
+                </div>
+              </div>
+              <Input 
+                class="form-control" 
+                type="password" 
+                placeholder="Password"
+                @value={{formData.password}}
+              />
+            </div>
+            <div class="input-group mb-4">
+              <div class="input-group-prepend">
+                <div class="input-group-text">
+                  <FaIcon @icon="lock" />
+                </div>
+              </div>
+              <Input 
+                class="form-control" 
+                type="password" 
+                placeholder="Repeat password"
+                @value={{formData.passwordRepeat}}
+              />
+            </div>
+            <button 
+              class="btn btn-block btn-success"
+              {{action (perform resetPasswordTask)}}
+            >
+              {{if resetPasswordTask.isRunning 'Reseting' 'Reset Password'}}
+            </button>
+            {{#if isError}}
+              <div class="red mt-3 t-align-c">
+                Can't reset password
+                <ul>
+                  <li>Check if the passwords are same</li>
+                  <li>Refresh to check if token has been expired</li>
+                </ul>
+              </div>
+            {{/if}}
+            {{#if isSuccess}}
+              <div class="green mt-3 t-align-c">
+                Your password has been reset!
+              </div>
+              <div class="t-align-c">
+                <LinkTo @route="login" class="">Go to Login page</LinkTo>
+              </div>
+            {{/if}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

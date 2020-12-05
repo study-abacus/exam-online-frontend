@@ -7,7 +7,7 @@ module.exports = function() {
       'user',
       'lock',
       'envelope',
-      'check'
+      'exclamation-circle',
     ]
   };
 };

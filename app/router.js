@@ -18,4 +18,6 @@ Router.map(function() {
   });
   this.route('verify', { path: 'verify/:token' });
   this.route('forgot-password');
+  this.route('reset-password', { path: 'reset-password/:token' });
+  this.route('token-expired');
 });
