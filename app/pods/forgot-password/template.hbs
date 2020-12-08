@@ -16,16 +16,16 @@
                 class="form-control" 
                 type="email" 
                 placeholder="Email"
-                @value={{formData.email}}
+                @value={{email}}
               />
             </div>
             <button 
               class="btn btn-block btn-success"
-              {{action (perform forgotPasswordTask)}}
+              {{action (perform forgotPasswordTask email)}}
             >
               {{if forgotPasswordTask.isRunning 'Sending mail' 'Send Password Reset Link'}}
             </button>
-            {{#if isError}}
+            {{#if lastResult.isError}}
               <div class="red mt-3 t-align-c">
                 Can't send reset mail
                 <ul>
@@ -33,7 +33,7 @@
                 </ul>
               </div>
             {{/if}}
-            {{#if isSuccess}}
+            {{#if lastResult.isSuccessful}}
               <div class="green mt-3 t-align-c">
                 A password reset link has been sent!
               </div>

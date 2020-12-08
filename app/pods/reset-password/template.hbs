@@ -38,7 +38,7 @@
             >
               {{if resetPasswordTask.isRunning 'Reseting' 'Reset Password'}}
             </button>
-            {{#if isError}}
+            {{#if lastResult.isError}}
               <div class="red mt-3 t-align-c">
                 Can't reset password
                 <ul>
@@ -47,7 +47,7 @@
                 </ul>
               </div>
             {{/if}}
-            {{#if isSuccess}}
+            {{#if lastResult.isSuccessful}}
               <div class="green mt-3 t-align-c">
                 Your password has been reset!
               </div>
