@@ -2,6 +2,7 @@ import Controller from '@ember/controller';
 import { dropTask } from 'ember-concurrency-decorators';
 import { inject as service } from '@ember/service';
 import { alias } from '@ember/object/computed';
+import { later } from '@ember/runloop';
 
 export default class ResetPasswordController extends Controller {
   @service api;
@@ -21,5 +22,9 @@ export default class ResetPasswordController extends Controller {
         ...this.formData
       })
     });
+
+    later(() => {
+      this.transitionToRoute('login')
+    }, 2000);
   }
 }

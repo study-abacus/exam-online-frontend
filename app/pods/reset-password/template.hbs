@@ -35,6 +35,7 @@
             <button 
               class="btn btn-block btn-success"
               {{action (perform resetPasswordTask)}}
+              disable={{lastResult.isSuccessful}}
             >
               {{if resetPasswordTask.isRunning 'Reseting' 'Reset Password'}}
             </button>
