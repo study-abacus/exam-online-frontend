@@ -1,6 +1,6 @@
 <h2>{{@question.title}}</h2>
 <div class="h5">
-  {{@question.description}}
+  {{markdown-to-html @question.description}}
 </div>
 
 {{component questionInputComponent question=@question answer=answer}}
