@@ -7,7 +7,7 @@ export default class ExamsRoute extends Route {
     return hash({
       abacusExaminations: this.store.query('examination', {
         filter: {
-          start: {
+          registrationEnd: {
             $gt: moment().toISOString()
           },
           type: 'abacus'
@@ -15,7 +15,7 @@ export default class ExamsRoute extends Route {
       }),
       vedicExaminations: this.store.query('examination', {
         filter: {
-          start: {
+          registrationEnd: {
             $gt: moment().toISOString()
           },
           type: 'vedic-maths'
@@ -23,7 +23,7 @@ export default class ExamsRoute extends Route {
       }),
       englishExaminations: this.store.query('examination', {
         filter: {
-          start: {
+          registrationEnd: {
             $gt: moment().toISOString()
           },
           type: 'english'
