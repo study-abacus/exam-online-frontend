@@ -1,0 +1,10 @@
+.recorder {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+
+  & video {
+    height: 200px;
+    width: 200px;
+  }
+}

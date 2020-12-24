@@ -14,6 +14,11 @@
               <LinkTo @route="exams.id.current-exam-attempt">
                 <button class="btn btn-primary">Start Exam</button>
               </LinkTo>
+              {{#if examAttemptError}}
+                <div>
+                  {{errorMessage}}
+                </div>
+              {{/if}}
             {{else}}
               <Timer @to={{moment @model.examination.examAttempt.start}} @onEnd={{action "onEnd"}} as |t|>
                 <div class="d-flex justify-content-center">
