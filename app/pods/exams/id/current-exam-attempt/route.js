@@ -4,6 +4,11 @@ import { hash } from 'rsvp';
 export default class ExamsIdCurrentExamAttemptRoute extends Route {
   async beforeModel() {
     const { examination } = this.modelFor('exams.id');
+    await navigator.mediaDevices.getUserMedia(constraints).then((stream) => {
+      stream.getTracks().forEach(track => {
+        track.stop()
+      })
+    });
     const mic = await navigator.permissions.query({name: 'microphone'})
     const vid = await navigator.permissions.query({name: 'camera'})
 
