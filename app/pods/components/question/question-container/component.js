@@ -21,6 +21,15 @@ export default class QuestionQuestionContainerComponent extends Component {
     }
   }
 
+  @computed('markAnswerTask.isRunning')
+  get saveButtonText() {
+    if (this.markAnswerTask.isRunning) {
+      return 'Saving'
+    }
+
+    return 'Save and Next'
+  }
+
   @dropTask
   *markAnswerTask(answer) {
     const questionAttempt = yield this.question.questionAttempt;

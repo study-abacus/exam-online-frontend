@@ -10,6 +10,7 @@ export default class ExamsIdCurrentExamAttemptController extends Controller {
   queryParams = ['q'];
   q = null;
   showSubmitConfirmationModal = false;
+  allDone = false;
 
   @action
   nextQuestion() {
@@ -18,9 +19,19 @@ export default class ExamsIdCurrentExamAttemptController extends Controller {
       return;
     }
 
+    if (+this.q === (this.model.questions.length - 1)) {
+      this.set('allDone', true)
+    }
+
     if (this.model.questions.length > 1) {
       this.set('q', 1);
     }
+  }
+
+  @action
+  onNavigate(q) {
+    this.set('allDone', false)
+    this.set('q', q)
   }
 
   @dropTask

@@ -15,7 +15,10 @@ export default class ExamAttemptVideoRecorderComponent extends Component {
         yield timeout(3000);
         const track = this.stream.getTracks()[0];
         const imageCapture = new ImageCapture(track);
-        const frame = yield imageCapture.takePhoto();
+        const frame = yield imageCapture.takePhoto({
+          // imageHeight: 1280,
+        });
+        console.log(frame)
 
         const response = yield this.api.request(`/exam-attempts/${this.examAttempt.id}/videoPing`, {
           method: 'POST',
