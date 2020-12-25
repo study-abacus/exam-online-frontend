@@ -29,11 +29,13 @@
           </button>
         </div>
       </div>
+
+      <div class="row">
+        {{exam-attempt/video-recorder examAttempt=@model.examAttempt}}
+      </div>
     </div>
   </div>
 </div>
-
-{{exam-attempt/video-recorder examAttempt=@model.examAttempt}}
 
 {{#if showSubmitConfirmationModal}}
 <ModalDialog

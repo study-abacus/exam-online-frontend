@@ -1,7 +1,12 @@
 .recorder {
-  position: absolute;
-  bottom: 15px;
-  right: 15px;
+  position: static;
+
+  // Medium devices (tablets, 768px and up)
+  @media (min-width: 768px) {
+    position: absolute !important;
+    bottom: 15px;
+    right: 15px;
+  }
 
   & video {
     height: 200px;
