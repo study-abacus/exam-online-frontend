@@ -4,15 +4,17 @@ import { hash } from 'rsvp';
 export default class ExamsIdCurrentExamAttemptRoute extends Route {
   async beforeModel() {
     const { examination } = this.modelFor('exams.id');
+    const constraints = {
+      video: true
+    }
     await navigator.mediaDevices.getUserMedia(constraints).then((stream) => {
       stream.getTracks().forEach(track => {
         track.stop()
       })
     });
-    const mic = await navigator.permissions.query({name: 'microphone'})
     const vid = await navigator.permissions.query({name: 'camera'})
 
-    if (mic.state !== 'granted' || vid.state !== 'granted') {
+    if (vid.state !== 'granted') {
       this.transitionTo('exams.id', examination.id, { queryParams: { examAttemptError: 'NO_RECORD_PERMISSION' } })
     }
   }
