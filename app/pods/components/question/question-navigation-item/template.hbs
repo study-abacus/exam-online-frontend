@@ -1,5 +1,5 @@
 <button 
-  class="option mb-3 p-3 text-white {{colorClass}}"
+  class="option mb-3 p-3 text-white {{if question.questionAttempt.answer "bg-success" (if isCurrentQuestion "bg-info" "bg-dark")}}"
   {{action @onClick}}
 >
   <strong>

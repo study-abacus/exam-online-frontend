@@ -10,7 +10,9 @@ export default class QuestionQuestionContainerComponent extends Component {
   answer = '';
 
   didReceiveAttrs() {
-    this.set('answer', this.question.get('questionAttempt.answer'));
+    this.question.get('questionAttempt').then(questionAttempt => {
+      this.set('answer', questionAttempt.get('answer'));
+    })
   }
 
   @computed('question.type')
