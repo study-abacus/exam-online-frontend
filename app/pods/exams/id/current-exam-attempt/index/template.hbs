@@ -7,14 +7,14 @@
     <div class="container">
       <div class="row">
         <div class="col-md-7">
-          {{#if allDone}}
-            <h4>All Questions Completed !</h4>
-          {{else if @model.currentQuestion}}
+          {{#if @model.currentQuestion}}
             <strong>Question {{if q (inc q) '1'}}</strong>
             <Question::QuestionContainer 
               @question={{@model.currentQuestion}}
               @onAfterAnswer={{action 'nextQuestion'}}
             />  
+          {{else}}
+            <h4>All Questions Completed !</h4>
           {{/if}}
         </div>
         <div class="col-md-5">

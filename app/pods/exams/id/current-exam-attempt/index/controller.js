@@ -7,24 +7,21 @@ export default class ExamsIdCurrentExamAttemptController extends Controller {
   @service store;
   @service api;
 
-  queryParams = ['q'];
-  q = null;
+  queryParams = ['q', 'allDone'];
+  q = 0;
   showSubmitConfirmationModal = false;
   allDone = false;
 
   @action
   nextQuestion() {
-    if (this.q && this.q < (this.model.questions.length - 1)) {
+    if (this.q !== null && this.q < (this.model.questions.length - 1)) {
       this.set('q', +this.q + 1);
       return;
     }
 
     if (+this.q === (this.model.questions.length - 1)) {
+      this.set('q', null)
       this.set('allDone', true)
-    }
-
-    if (this.model.questions.length > 1) {
-      this.set('q', 1);
     }
   }
 

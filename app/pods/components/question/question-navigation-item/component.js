@@ -5,18 +5,17 @@ import { inject as service } from '@ember/service';
 export default class QuestionQuestionNavigationItemComponent extends Component {
   @service store;
 
-  @computed('question.questionAttempt', 'question')
+  @computed('question.questionAttempt.id', 'question')
   get questionAttempt() {
     return this
       .store
       .peekAll('question-attempt')
-      .filter(questionAttempt => questionAttempt.get('question.id') === this.question.id)
+      .filter(questionAttempt => questionAttempt.get('question.id') === this.question.id && questionAttempt.get('id'))
       .firstObject;
   }
 
   @computed('isCurrentQuestion', 'question', 'questionAttempt')
   get colorClass() {
-    //debugger
     if (this.get('questionAttempt.willReview')) {
       return 'bg-warning'
     }

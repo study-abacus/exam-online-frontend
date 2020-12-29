@@ -38,6 +38,11 @@ module.exports = function(environment) {
     ENV.RazorpayId = 'rzp_test_Ou4rWUqLrEoS8l'
   }
 
+  if (environment === 'nginx') {
+    ENV.apiHost = 'http://test.examination-backend'
+    ENV.RazorpayId = 'rzp_test_Ou4rWUqLrEoS8l'
+  }
+
   if (environment === 'test') {
     // Testem prefers this...
     ENV.locationType = 'none';
