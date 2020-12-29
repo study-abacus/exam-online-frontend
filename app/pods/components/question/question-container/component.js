@@ -11,6 +11,10 @@ export default class QuestionQuestionContainerComponent extends Component {
 
   didReceiveAttrs() {
     this.question.get('questionAttempt').then(questionAttempt => {
+      if (questionAttempt === null) {
+        this.set('answer', '');
+        return;
+      }
       this.set('answer', questionAttempt.get('answer'));
     })
   }
