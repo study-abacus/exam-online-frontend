@@ -22,6 +22,7 @@ export default class ExamsIdCurrentExamAttemptRoute extends Route {
   async model() {
     const { examination } = this.modelFor('exams.id');
     const examAttempt = examination.examAttempt;
+    await this.store.unloadAll('question-attempt');
     const questionAttempts = this.store.query('question-attempt', {
       custom: {
         ext: 'url',
