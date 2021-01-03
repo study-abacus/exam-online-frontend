@@ -1,5 +1,5 @@
 <h2>{{@question.title}}</h2>
-<div class="h5">
+<div class="h5" id="question-container">
   {{markdown-to-html @question.description}}
 </div>
 
@@ -16,3 +16,5 @@
     </button>
   </div>
 </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_HTML-full"></script>

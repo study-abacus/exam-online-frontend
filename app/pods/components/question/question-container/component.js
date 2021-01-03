@@ -9,6 +9,13 @@ export default class QuestionQuestionContainerComponent extends Component {
 
   answer = '';
 
+  didRender() {
+    const questionContainer = document.querySelector('.code-window__question-area')
+    if (window.MathJax && questionContainer) {
+      run.later (_ => MathJax.Hub.Queue(["Typeset", MathJax.Hub, questionContainer]))
+    }
+  }
+
   didReceiveAttrs() {
     this.question.get('questionAttempt').then(questionAttempt => {
       if (questionAttempt === null) {
