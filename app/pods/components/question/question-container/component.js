@@ -2,18 +2,32 @@ import Component from '@ember/component';
 import { inject as service } from '@ember/service';
 import { dropTask } from 'ember-concurrency-decorators';
 import { computed } from '@ember/object';
+import { later } from '@ember/runloop';
 
 export default class QuestionQuestionContainerComponent extends Component {
   @service api;
   @service store;
 
   answer = '';
+  mathJaxLoaded = false;
+
+  runMathJax() {
+    const questionContainer = document.querySelector('#question-container');
+
+    renderMathInElement(questionContainer, {
+      displayMode: true
+    })
+  }
 
   didRender() {
-    const questionContainer = document.querySelector('.code-window__question-area')
-    if (window.MathJax && questionContainer) {
-      run.later (_ => MathJax.Hub.Queue(["Typeset", MathJax.Hub, questionContainer]))
-    }
+    const MathJaxScript = document.querySelector('#math-jax-script');
+    MathJaxScript.addEventListener('load', () => {
+      !this.mathJaxLoaded && this.runMathJax();
+    })
+  }
+
+  didUpdate() {
+    this.runMathJax();
   }
 
   didReceiveAttrs() {
