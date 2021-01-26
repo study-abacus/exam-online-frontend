@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="t-align-c h2">
+    Annual Championship 2020-2021 Result 
+  </div>
+  <div class="mt-5">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Examination</th>
+          <th scope="col">Marks Obtained</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Online Written Exam</td>
+          <td>{{examAttempt.result.score}}</td>
+        </tr>
+        <tr>
+          <td>Viva Exam</td>
+          <td>{{examAttempt.result.vivaScore}}</td>
+        </tr>
+        <tr>
+          <td>
+            <strong>
+              Total Score
+            </strong>
+          </td>
+          <td>
+            <strong>
+              {{examAttempt.result.totalScore}}
+            </strong>
+          </td>
+        </tr>
+        <tr>
+          <td>Rank</td>
+          <td>{{examAttempt.result.rank}}</td>
+        </tr>
+        <tr>
+          <td>Result</td>
+          <td>{{examAttempt.result.result}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
