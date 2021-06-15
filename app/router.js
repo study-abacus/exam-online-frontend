@@ -14,6 +14,7 @@ Router.map(function() {
     this.route('id', { path: '/:id' }, function() {
       this.route('current-exam-attempt', function() {});
       this.route('thank-you');
+      this.route('result');
     });
   });
   this.route('verify', { path: 'verify/:token' });

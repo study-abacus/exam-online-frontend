@@ -7,6 +7,9 @@
       <LinkTo @route="exams.id" @model="{{@examAttempt.examination.id}}">
         <button class="btn btn-danger">Exam Submitted</button>
       </LinkTo>
+      <LinkTo @route="exams.id.result" @model="{{@examAttempt.examination.id}}">
+        <button class="btn btn-info">Result</button>
+      </LinkTo>
     {{else}}
       <LinkTo @route="exams.id" @model="{{@examAttempt.examination.id}}">
         <button class="btn btn-success">View Exam</button>
