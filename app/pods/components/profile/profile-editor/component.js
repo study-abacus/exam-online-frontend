@@ -11,8 +11,7 @@ export default class ProfileProfileEditorComponent extends Component {
 
   availableCourses = [
     'Abacus',
-    'Vedic Maths',
-    'English'
+    'Vedic Maths'
   ]
   @alias('fetchTeachersTask.lastSuccessful.value') teachers = []
 
