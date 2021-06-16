@@ -1,8 +1,8 @@
 <div class="container">
 
-  {{#if this.selectedExaminations.length}}
+  {{#if this.selectedExamination}}
     <Examination::SelectedExamination 
-      @selectedExaminations={{this.selectedExaminations}}
+      @selectedExaminations={{array this.selectedExamination}}
       @onRemove={{action 'removeExamination'}}
       @onAfterApply={{action 'onAfterApply'}}
     />
@@ -18,10 +18,10 @@
     >
       <button 
         class="btn btn-primary mt-2"
-        disabled={{includes selectedExaminations examination}}
+        disabled={{eq selectedExamination examination}}
         {{action 'selectExamination' examination}}
       >
-        {{if (includes selectedExaminations examination) 'Enrolled' 'Enroll'}}
+        {{if (eq selectedExamination examination) 'Enrolled' 'Enroll'}}
       </button>
     </Examination::ExaminationList>
   </div>
@@ -34,10 +34,10 @@
     >
       <button 
         class="btn btn-primary mt-2"
-        disabled={{includes selectedExaminations examination}}
+        disabled={{eq selectedExamination examination}}
         {{action 'selectExamination' examination}}
       >
-        {{if (includes selectedExaminations examination) 'Enrolled' 'Enroll'}}
+        {{if (eq selectedExamination examination) 'Enrolled' 'Enroll'}}
       </button>
     </Examination::ExaminationList>
   </div>
@@ -50,10 +50,10 @@
     >
       <button 
         class="btn btn-primary mt-2"
-        disabled={{includes selectedExaminations examination}}
+        disabled={{eq selectedExamination examination}}
         {{action 'selectExamination' examination}}
       >
-        {{if (includes selectedExaminations examination) 'Enrolled' 'Enroll'}}
+        {{if (eq selectedExamination examination) 'Enrolled' 'Enroll'}}
       </button>
     </Examination::ExaminationList>
   </div> --}}

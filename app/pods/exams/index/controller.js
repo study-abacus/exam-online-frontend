@@ -1,22 +1,17 @@
 import Controller from '@ember/controller';
-import { action } from '@ember/object';
+import { action, computed } from '@ember/object';
 
 export default class ExamsIndexController extends Controller {
-  selectedExaminations = [];
+  selectedExamination = null;
 
   @action
   selectExamination(examination) {
-    if (this.selectedExaminations.length > 1) return;
-    if (!this.selectedExaminations.includes(examination)) {
-      this.selectedExaminations.pushObject(examination);
-    }
+    this.set('selectedExamination', examination);
   }
 
   @action
   removeExamination(examination) {
-    if (this.selectedExaminations.includes(examination)) {
-      this.selectedExaminations.removeObject(examination);
-    }
+    this.set('selectedExamination', null);
   }
 
   @action 
