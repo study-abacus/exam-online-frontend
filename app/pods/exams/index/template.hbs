@@ -1,60 +1,6 @@
-<div class="container">
-
-  {{#if this.selectedExamination}}
-    <Examination::SelectedExamination 
-      @selectedExaminations={{array this.selectedExamination}}
-      @onRemove={{action 'removeExamination'}}
-      @onAfterApply={{action 'onAfterApply'}}
-    />
-  {{/if}}
-
-  <h1>Upcoming Exams</h1>
-
-  <h2 class="mt-4">Abacus</h2>
-  <div class="mt-3">
-    <Examination::ExaminationList
-      @examinations={{abacusExaminations}}
-      as |examination|
-    >
-      <button 
-        class="btn btn-primary mt-2"
-        disabled={{eq selectedExamination examination}}
-        {{action 'selectExamination' examination}}
-      >
-        {{if (eq selectedExamination examination) 'Enrolled' 'Enroll'}}
-      </button>
-    </Examination::ExaminationList>
-  </div>
-
-  <h2 class="mt-4">Vedic Maths</h2>
-  <div class="mt-3">
-    <Examination::ExaminationList
-      @examinations={{vedicExaminations}}
-      as |examination|
-    >
-      <button 
-        class="btn btn-primary mt-2"
-        disabled={{eq selectedExamination examination}}
-        {{action 'selectExamination' examination}}
-      >
-        {{if (eq selectedExamination examination) 'Enrolled' 'Enroll'}}
-      </button>
-    </Examination::ExaminationList>
-  </div>
-
-  {{!-- <h2 class="mt-4">Xpress English</h2>
-  <div class="mt-3">
-    <Examination::ExaminationList
-      @examinations={{englishExaminations}}
-      as |examination|
-    >
-      <button 
-        class="btn btn-primary mt-2"
-        disabled={{eq selectedExamination examination}}
-        {{action 'selectExamination' examination}}
-      >
-        {{if (eq selectedExamination examination) 'Enrolled' 'Enroll'}}
-      </button>
-    </Examination::ExaminationList>
-  </div> --}}
-</div>
+<Examination::ExaminationView 
+  @abacusExaminations={{abacusExaminations}}
+  @vedicExaminations={{vedicExaminations}}
+  @englishExaminations={{englishExaminations}}
+  @onAfterApply={{onAfterApply}}
+/>
