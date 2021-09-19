@@ -12,10 +12,10 @@
                   <FaIcon @icon="user" />
                 </div>
               </div>
-              <Input 
-                class="form-control" 
-                type="text" 
-                placeholder="Student Name" 
+              <Input
+                class="form-control"
+                type="text"
+                placeholder="Student Name"
                 autocomplete="off"
                 @value={{formData.name}}
               />
@@ -23,54 +23,62 @@
             <div class="input-group mb-3">
               <div class="input-group-prepend">
                 <div class="input-group-text">
-                  <FaIcon @icon="envelope" />
+                  <FaIcon @icon="phone" />
                 </div>
               </div>
-              <Input 
-                class="form-control" 
-                type="email" 
-                placeholder="Email"
-                @value={{formData.email}}
+              <Input
+                class="form-control"
+                type="text"
+                placeholder="Phone Number (10 digits)"
+                @value={{formData.phone}}
+                disabled={{if-equals this.state "otp-input"}}
               />
             </div>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <div class="input-group-text">
-                  <FaIcon @icon="lock" />
+
+            {{#if (if-equals this.state "phone-input")}}
+              <button
+                type="button"
+                class="btn btn-primary px-4"
+                {{action (perform sendOtp)}}
+              >Send OTP</button>
+            {{else}}
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <FaIcon @icon="key" />
+                  </div>
                 </div>
+                <Input
+                  class="form-control"
+                  type="text"
+                  placeholder="OTP"
+                  @value={{formData.otp}}
+                />
               </div>
-              <Input 
-                class="form-control" 
-                type="password" 
-                placeholder="Password"
-                @value={{formData.password}}
-              />
-            </div>
-            <div class="input-group mb-4">
-              <div class="input-group-prepend">
-                <div class="input-group-text">
-                  <FaIcon @icon="lock" />
-                </div>
-              </div>
-              <Input 
-                class="form-control" 
-                type="password" 
-                placeholder="Repeat password"
-                @value={{formData.passwordRepeat}}
-              />
-            </div>
-            <button 
-              class="btn btn-block btn-success"
-              {{action (perform createAccountTask)}}
-            >
-              {{if createAccountTask.isRunning 'Creating' 'Create Account'}}
-            </button>
+              <button
+                class="btn btn-block btn-success"
+                {{action (perform createAccountTask)}}
+              >
+                {{if createAccountTask.isRunning "Creating" "Create Account"}}
+              </button>
+            {{/if}}
+
             {{#if lastResult.isError}}
               <div class="red mt-3 t-align-c">
                 Can't create user
                 <ul>
-                  <li>Check if the passwords are same</li>
-                  <li>Check if the email is available or not</li>
+                  <li>Check if the phone number is correct</li>
+                  <li>Check if OTP is correct</li>
+                </ul>
+              </div>
+            {{/if}}
+
+            {{#if sendOtp.last.isError}}
+              <div class="red mt-3 t-align-c">
+                Can't send OTP
+                <ul>
+                  <li>Check if user is already registered</li>
+                  <li>Check if credentials are valid</li>
                 </ul>
               </div>
             {{/if}}

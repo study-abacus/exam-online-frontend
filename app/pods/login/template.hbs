@@ -5,44 +5,71 @@
         <div class="card-group row">
           <div class="card p-4 col-md-6">
             <div class="card-body">
-              <h1>Login</h1>
+              <h1>Login with OTP</h1>
               <p class="text-muted">Sign In to your account</p>
               <div class="input-group mb-3">
                 <div class="input-group-prepend">
                   <div class="input-group-text">
-                    <FaIcon @icon="user" />
+                    <FaIcon @icon="phone" />
                   </div>
                 </div>
-                <Input class="form-control" type="text" placeholder="Email" autocomplete="off" @value={{email}} />
+                <Input
+                  class="form-control"
+                  type="number"
+                  placeholder="10 digit phone number"
+                  autocomplete="off"
+                  minlength="10"
+                  maxlength="10"
+                  @value={{phone}}
+                  disabled={{if-equals this.state "otp-input"}}
+                />
               </div>
-              <div class="input-group mb-4">
-                <div class="input-group-prepend">
-                  <div class="input-group-text">
-                    <FaIcon @icon="lock" />
+              {{#if (if-equals state "phone-input")}}
+                <button
+                  type="button"
+                  class="btn btn-primary px-4"
+                  {{action (perform sendOtp)}}
+                >Send OTP</button>
+              {{else}}
+                <div class="input-group mb-4">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">
+                      <FaIcon @icon="lock" />
+                    </div>
                   </div>
+                  <Input
+                    class="form-control"
+                    type="number"
+                    placeholder="Enter OTP here"
+                    autocomplete="off"
+                    @value={{otp}}
+                  />
                 </div>
-                <Input class="form-control" type="password" placeholder="Password" autocomplete="off" @value={{password}} />
-              </div>
-              <div class="row">
-                <div class="col-12">
-                  <button 
-                    class="btn btn-primary px-4" 
-                    type="button" 
+                <div class="row">
+                  <button
+                    class="btn btn-primary px-4"
+                    type="button"
                     disabled={{login.isRunning}}
                     {{action (perform login)}}
                   >
-                    {{if login.isRunning 'Logging In' 'Login'}}
+                    {{if login.isRunning "Logging In" "Login"}}
                   </button>
 
                   {{#if login.last.isError}}
                     <div class="red">
-                      Invalid Email ID or password
+                      Invalid Phone Number or OTP
+                    </div>
+                  {{/if}}
+                  {{#if sendOtp.last.isError}}
+                    <div class="red">
+                      Invalid Phone Number
                     </div>
                   {{/if}}
                 </div>
-                <div class="col-12">
-                  <LinkTo @route="forgot-password" class="">Forgot your password?</LinkTo>
-                </div>
+
+              {{/if}}
+              <div class="row">
+                <LinkTo @route="forgot-password" class="">Forgot your password?</LinkTo>
               </div>
             </div>
           </div>
@@ -51,9 +78,13 @@
               <div>
                 <h2>Sign up</h2>
                 <p>
-                  Register to participate in Inter-Center Online Exam 2021. Test your skills in Online Abacus and Vedic Maths.
+                  Register to participate in Inter-Center Online Exam 2021. Test
+                  your skills in Online Abacus and Vedic Maths.
                 </p>
-                <LinkTo @route="register" class="btn btn-lg btn-outline-light mt-3">Register Now</LinkTo>
+                <LinkTo
+                  @route="register"
+                  class="btn btn-lg btn-outline-light mt-3"
+                >Register Now</LinkTo>
               </div>
             </div>
           </div>
