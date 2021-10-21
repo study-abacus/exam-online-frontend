@@ -29,7 +29,15 @@
                   type="button"
                   class="btn btn-primary px-4"
                   {{action (perform sendOtp)}}
-                >Send OTP</button>
+                >
+                  Send OTP
+                </button>
+
+                {{#if sendOtp.last.isError}}
+                  <div class="red">
+                    Unregistered or Invalid Phone Number 
+                  </div>
+                {{/if}}
               {{else}}
                 <div class="input-group mb-4">
                   <div class="input-group-prepend">
@@ -58,11 +66,6 @@
                   {{#if login.last.isError}}
                     <div class="red">
                       Invalid Phone Number or OTP
-                    </div>
-                  {{/if}}
-                  {{#if sendOtp.last.isError}}
-                    <div class="red">
-                      Invalid Phone Number
                     </div>
                   {{/if}}
                 </div>

@@ -5,7 +5,7 @@ export default class ProfileModel extends Model {
   @attr() school;
   @attr() class;
   @attr() guardianName;
-  @attr() contact;
+  @attr() email;
   @attr() address;
   @attr() city;
   @attr({ defaultValue: 'India' }) country;
