@@ -5,7 +5,7 @@ export default class LayoutService extends Service {
   @service session;
   @service router;
 
-  @computed('router.currentRoute')
+  @computed('router.currentRoute', 'session.isAuthenticated')
   get currentLayoutComponentName() {
     if (this.session.isAuthenticated) {
       if (!this.router.currentRoute) { return 'layouts/with-navbar-sidebar' }
