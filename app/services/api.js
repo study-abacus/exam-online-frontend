@@ -2,6 +2,16 @@ import FetchService from 'ember-fetch-service/services/fetch';
 import { inject as service } from '@ember/service';
 import ENV from 'exam-online-frontend/config/environment';
 
+
+export class ApiError extends Error {
+  constructor({ title, detail, code }) {
+    super();
+    this.title = title;
+    this.detail = detail;
+    this.code = code;
+  }
+}
+
 export default class ApiService extends FetchService {
   @service session;
 
@@ -22,9 +32,14 @@ export default class ApiService extends FetchService {
   request(url, opts, throwError = true) {
     return this
       .fetch(ENV.apiHost + '/api' + url, opts)
-      .then(resp => {
+      .then(async resp => {
         if (!resp.ok && throwError) {
-          throw new Error(`Request failed with status code ${resp.status}`)
+          const error_payload = (await resp.json()).errors[0]
+          throw new ApiError({
+            title: error_payload.title,
+            code: error_payload.code,
+            detail: error_payload.detail
+          })
         }
 
         return resp;

@@ -35,7 +35,7 @@
 
                 {{#if sendOtp.last.isError}}
                   <div class="red">
-                    Unregistered or Invalid Phone Number 
+                    {{sendOtp.lastErrored.error.detail}}
                   </div>
                 {{/if}}
               {{else}}
@@ -78,7 +78,7 @@
               <div>
                 <h2>Sign up</h2>
                 <p>
-                  Register to participate in Annual Championship of Abacus and Vedic Maths 2021-22
+                  Enrollment to participate in Annual Championship Online Exam 2021-22 of Abacus, Vedic Maths and English
                 </p>
                 <LinkTo
                   @route="register"
