@@ -5,7 +5,7 @@
         <div class="card-group row">
           <div class="card p-4 col-md-6">
             <div class="card-body">
-              <h1>Login with OTP</h1>
+              {{!-- <h1>Login with OTP</h1>
               <p class="text-muted">Sign In to your account</p>
               <div class="input-group mb-3">
                 <div class="input-group-prepend">
@@ -70,7 +70,52 @@
                   {{/if}}
                 </div>
 
-              {{/if}}
+              {{/if}} --}}
+              <!-- Updated template.hbs -->
+          <h1>Login with Username and Password</h1>
+          <p class="text-muted">Sign In to your account</p>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <div class="input-group-text">
+                <FaIcon @icon="user" />
+              </div>
+            </div>
+            <Input
+              class="form-control"
+              type="text"
+              placeholder="Your username"
+              autocomplete="off"
+              @value={{username}}
+              disabled={{if-equals this.state "password-input"}}
+            />
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <div class="input-group-text">
+                <FaIcon @icon="lock" />
+              </div>
+            </div>
+            <Input
+              class="form-control"
+              type="password"
+              placeholder="Your password"
+              autocomplete="off"
+              @value={{password}}
+            />
+          </div>
+          <button
+            type="button"
+            class="btn btn-primary px-4"
+            {{action (perform login)}}
+          >
+            {{if login.isRunning "Logging In" "Login"}}
+          </button>
+          {{#if login.last.isError}}
+            <div class="red">
+              Invalid Username or Password
+            </div>
+          {{/if}}
+
             </div>
           </div>
           <div class="card text-white bg-primary py-5 col-md-6">
