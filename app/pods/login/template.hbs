@@ -1,138 +1,43 @@
-<div class="d-flex flex-col align-items-center w-100">
+<div class="d-flex align-items-center justify-content-center w-100 h-100">
   <div class="container">
     <div class="row justify-content-center">
-      <div class="col-md-8">
+      {{!-- <div class="col-md-8"> --}}
         <div class="card-group row">
-          <div class="card p-4 col-md-6">
+          <div class="card p-10 col-md-10 ">
             <div class="card-body">
-              {{!-- <h1>Login with OTP</h1>
+              <h1>Login with Username & Password</h1>
               <p class="text-muted">Sign In to your account</p>
               <div class="input-group mb-3">
                 <div class="input-group-prepend">
                   <div class="input-group-text">
-                    <FaIcon @icon="phone" />
+                    <FaIcon @icon="user" />
                   </div>
                 </div>
-                <Input
-                  class="form-control"
-                  type="number"
-                  placeholder="10 digit phone number"
-                  autocomplete="off"
-                  minlength="10"
-                  maxlength="10"
-                  @value={{phone}}
-                  disabled={{if-equals this.state "otp-input"}}
-                />
+                <Input class="form-control" type="text" placeholder="Your username" autocomplete="off"
+                  @value={{username}} disabled={{if-equals this.state "password-input" }} />
               </div>
-              {{#if (if-equals state "phone-input")}}
-                <button
-                  type="button"
-                  class="btn btn-primary px-4"
-                  {{action (perform sendOtp)}}
-                >
-                  Send OTP
-                </button>
-
-                {{#if sendOtp.last.isError}}
-                  <div class="red">
-                    {{sendOtp.lastErrored.error.detail}}
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <FaIcon @icon="lock" />
                   </div>
-                {{/if}}
-              {{else}}
-                <div class="input-group mb-4">
-                  <div class="input-group-prepend">
-                    <div class="input-group-text">
-                      <FaIcon @icon="lock" />
-                    </div>
-                  </div>
-                  <Input
-                    class="form-control"
-                    type="number"
-                    placeholder="Enter OTP here"
-                    autocomplete="off"
-                    @value={{otp}}
-                  />
                 </div>
-                <div class="row">
-                  <button
-                    class="btn btn-primary px-4"
-                    type="button"
-                    disabled={{login.isRunning}}
-                    {{action (perform login)}}
-                  >
-                    {{if login.isRunning "Logging In" "Login"}}
-                  </button>
-
-                  {{#if login.last.isError}}
-                    <div class="red">
-                      Invalid Phone Number or OTP
-                    </div>
-                  {{/if}}
-                </div>
-
-              {{/if}} --}}
-              <!-- Updated template.hbs -->
-          <h1>Login with Username and Password</h1>
-          <p class="text-muted">Sign In to your account</p>
-          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <div class="input-group-text">
-                <FaIcon @icon="user" />
+                <Input class="form-control" type="password" placeholder="Your password" autocomplete="off"
+                  @value={{password}} />
               </div>
-            </div>
-            <Input
-              class="form-control"
-              type="text"
-              placeholder="Your username"
-              autocomplete="off"
-              @value={{username}}
-              disabled={{if-equals this.state "password-input"}}
-            />
-          </div>
-          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <div class="input-group-text">
-                <FaIcon @icon="lock" />
+              <button type="button" class="btn btn-primary px-4" {{action (perform login)}}>
+                {{if login.isRunning "Logging In" "Login"}}
+              </button>
+              {{#if login.last.isError}}
+              <div class="red">
+                <br>
+                Invalid Username or Password
               </div>
-            </div>
-            <Input
-              class="form-control"
-              type="password"
-              placeholder="Your password"
-              autocomplete="off"
-              @value={{password}}
-            />
-          </div>
-          <button
-            type="button"
-            class="btn btn-primary px-4"
-            {{action (perform login)}}
-          >
-            {{if login.isRunning "Logging In" "Login"}}
-          </button>
-          {{#if login.last.isError}}
-            <div class="red">
-              Invalid Username or Password
-            </div>
-          {{/if}}
+              {{/if}}
 
             </div>
           </div>
-          <div class="card text-white bg-primary py-5 col-md-6">
-            <div class="card-body text-center">
-              <div>
-                <h2>Sign up</h2>
-                <p>
-                  Enrollment to participate in Annual Championship Online Exam 2021-22 of Abacus, Vedic Maths and English
-                </p>
-                <LinkTo
-                  @route="register"
-                  class="btn btn-lg btn-outline-light mt-3"
-                >Register Now</LinkTo>
-              </div>
-            </div>
-          </div>
-        </div>
+        {{!-- </div> --}}
       </div>
     </div>
   </div>

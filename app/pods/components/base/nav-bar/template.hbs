@@ -7,14 +7,15 @@
   </button>
   <ul class="c-header-nav ml-auto mr-4">
     <li class="c-header-nav-item dropdown" {{on-click-outside (action (mut showPopup) false)}}>
-      <a 
+      
+      {{!-- <a 
         class="c-header-nav-link bold"
         href="#"
         {{action (mut showPopup) true}}
-      >
+      > --}}
         {{currentUser.user.name}}
-      </a>
-      <div class="dropdown-menu dropdown-menu-right pt-0 {{if showPopup 'show' }}">
+      {{!-- </a> --}}
+      {{!-- <div class="dropdown-menu dropdown-menu-right pt-0 {{if showPopup 'show' }}">
         <div class="dropdown-header bg-light py-2">
           <strong>Account</strong>
         </div>
@@ -25,7 +26,7 @@
         >
           Logout
         </a>
-      </div>
+      </div> --}}
     </li>
   </ul>
 </header>

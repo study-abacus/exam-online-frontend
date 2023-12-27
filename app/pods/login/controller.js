@@ -56,15 +56,11 @@ export default class LoginController extends Controller {
 
   @dropTask
   *login() {
-    try {
       yield this.session.authenticate("authenticator:jwt", {
         username: this.username,
         password: this.password,
       });
       yield this.currentUser.load();
       this.transitionToRoute("dashboard");
-    } catch (error) {
-      this.loginError = true;
-    }
   }
 }
